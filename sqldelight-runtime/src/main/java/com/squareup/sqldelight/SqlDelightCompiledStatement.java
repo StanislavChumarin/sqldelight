@@ -15,31 +15,32 @@
  */
 package com.squareup.sqldelight;
 
-import android.database.sqlite.SQLiteStatement;
+import android.arch.persistence.db.SupportSQLiteQuery;
+import android.arch.persistence.db.SupportSQLiteStatement;
 
-public abstract class SqlDelightCompiledStatement {
+public abstract class SqlDelightCompiledStatement implements SupportSQLiteQuery {
   public final String table;
-  public final SQLiteStatement program;
+  public final SupportSQLiteStatement program;
 
-  protected SqlDelightCompiledStatement(String table, SQLiteStatement program) {
+  protected SqlDelightCompiledStatement(String table, SupportSQLiteStatement program) {
     this.table = table;
     this.program = program;
   }
 
   public static abstract class Insert extends SqlDelightCompiledStatement {
-    protected Insert(String table, SQLiteStatement program) {
+    protected Insert(String table, SupportSQLiteStatement program) {
       super(table, program);
     }
   }
 
   public static abstract class Update extends SqlDelightCompiledStatement {
-    protected Update(String table, SQLiteStatement program) {
+    protected Update(String table, SupportSQLiteStatement program) {
       super(table, program);
     }
   }
 
   public static abstract class Delete extends SqlDelightCompiledStatement {
-    protected Delete(String table, SQLiteStatement program) {
+    protected Delete(String table, SupportSQLiteStatement program) {
       super(table, program);
     }
   }

@@ -15,9 +15,11 @@
  */
 package com.squareup.sqldelight;
 
+import android.arch.persistence.db.SupportSQLiteProgram;
+import android.arch.persistence.db.SupportSQLiteQuery;
 import java.util.Set;
 
-public class SqlDelightStatement {
+public final class SqlDelightStatement implements SupportSQLiteQuery {
   public final String statement;
   public final String[] args;
   /** A set of the tables this statement observes. */
@@ -27,5 +29,13 @@ public class SqlDelightStatement {
     this.statement = statement;
     this.args = args;
     this.tables = tables;
+  }
+
+  @Override public String getSql() {
+    return null;
+  }
+
+  @Override public void bindTo(SupportSQLiteProgram supportSQLiteProgram) {
+
   }
 }
